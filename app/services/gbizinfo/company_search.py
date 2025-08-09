@@ -41,23 +41,5 @@ def search_company_by_name(name: str, limit: int = 10):
     if not hits:
         raise HTTPException(status_code=404, detail=f"会社名「{name}」に一致する企業は見つかりませんでした。")
 
-    # 取得するデータを整形
-    def pick(x):
-        return {
-            # 会社概要
-            "name": x.get("name"),  # 法人名
-            "corporate_number": x.get("corporate_number") or x.get("jcn"),  # 法人番号
-            "established_date": x.get("established_date") or x.get("founding_year"),  # 設立日または設立年
-            "capital": x.get("capital"),  # 資本金
-            "employee_number": x.get("employee_number"),  # 従業員数
-            "address": x.get("address"),  # 本社所在地
-
-            # 事業構成
-            "business_summary": x.get("business_summary"),  # 事業概要
-
-            # 公式発信
-            "homepage": x.get("url") or x.get("homepage"),  # 企業URL
-        }
-
-    # 整形済みデータを返す
-    return {"count": len(hits), "results": [pick(x) for x in hits]}
+    # 取得結果を返す
+    return {"count": len(hits), "results": hits}

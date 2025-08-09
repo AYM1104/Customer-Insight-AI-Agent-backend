@@ -20,7 +20,7 @@ def get_company_info(
     limit: int = Query(10, ge=1, le=50, description="取得件数の上限（1〜50）")
 ):
     """
-    gBizINFO API を利用して会社名から法人情報を検索します。
+    gBizINFO API を利用して正式会社名と法人番号を取得します。
     - **name**: 検索対象の会社名（部分一致可）
     - **limit**: 最大取得件数（1〜50）
     """
