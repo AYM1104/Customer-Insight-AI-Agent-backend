@@ -7,7 +7,7 @@ from fastapi import APIRouter, Query
 from app.services.gbizinfo.company_search import search_company_by_name
 
 
-# ルーターを定義
+# エンドポイントのルーターを定義
 router = APIRouter(prefix="/gbiz", tags=["gBizINFO"])
 
 
