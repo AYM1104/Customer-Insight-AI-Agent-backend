@@ -1,6 +1,7 @@
 # app/main.py
 from fastapi import FastAPI
 from app.api.routes.gbizinfo import company_search, company_detail
+from app.api.routes.edinet import yuho_search
 
 app = FastAPI(
     title="顧客理解AIエージェント",
@@ -11,6 +12,7 @@ app = FastAPI(
 # ルーター登録
 app.include_router(company_search.router)
 app.include_router(company_detail.router)
+app.include_router(yuho_search.router)
 
 # 動作確認用
 @app.get("/")
